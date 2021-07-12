@@ -1,7 +1,7 @@
-From 5fc67b7139de1acc4aa14ad6820b5d5442ee5587 Mon Sep 17 00:00:00 2001
+From 2d247e7915d5b7f3b26c744e962168ec0c2f1e91 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Wed, 7 Jul 2021 10:18:14 +0000
-Subject: [PATCH backport v5.10.43 46/47] leds: mlxreg: Skip setting LED color
+Subject: [PATCH backport v5.10.43 50/65] leds: mlxreg: Skip setting LED color
  during initialization
 
 Hardware controls LED through CPLD device and LED control ownership

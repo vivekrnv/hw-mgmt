@@ -1,7 +1,7 @@
-From 407e927245d2908e5214c3f3df68459132a0f9a9 Mon Sep 17 00:00:00 2001
+From 7b080fe95eaa4949449274a8180f4f3f484b8f0d Mon Sep 17 00:00:00 2001
 From: Andrew Lunn <andrew@lunn.ch>
 Date: Fri, 9 Apr 2021 11:06:40 +0300
-Subject: [PATCH backport v5.10.43 50/52] phy: sfp: add netlink SFP support to
+Subject: [PATCH backport v5.10.43 40/65] phy: sfp: add netlink SFP support to
  generic SFP code
 
 The new netlink API for reading SFP data requires a new op to be

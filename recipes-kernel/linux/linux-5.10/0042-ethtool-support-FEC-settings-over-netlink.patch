@@ -1,7 +1,7 @@
-From c9351d2636f82fd79ee74589e6be9353ecf5619f Mon Sep 17 00:00:00 2001
+From bcbdb24a2f9f09eff689bfdc96d420d895b65562 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Thu, 8 Jul 2021 06:46:53 +0000
-Subject: [PATCH backport v5.10.43 52/52] ethtool: support FEC settings over
+Subject: [PATCH backport v5.10.43 42/65] ethtool: support FEC settings over
  netlink
 
 Backport from upstream commit 1e5d1f69d9fb8ea0679f9e85915e8e7fdacfbe7a

@@ -1,7 +1,7 @@
-From 5de3f664d5521b499dcc4204d13869db4981c657 Mon Sep 17 00:00:00 2001
+From 3a25c1238e84f382de97f4048a82091aebc878ad Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
-Date: Sun, 10 Jan 2021 16:17:36 +0200
-Subject: [PATCH backport v5.10.43 39/41] mlxsw: minimal: Simplify method of
+Date: Sat, 10 Jul 2021 07:53:25 +0000
+Subject: [PATCH backport v5.10.43 54/65] mlxsw: minimal: Simplify method of
  modules number detection
 
 Remove unnecessary access to PMLP register, used to find the number of
@@ -13,11 +13,11 @@ transaction up to the local ports maximum.
 
 Signed-off-by: Vadim Pasternak <vadimp@nvidia.com>
 ---
- drivers/net/ethernet/mellanox/mlxsw/minimal.c | 107 ++++--------------
- 1 file changed, 20 insertions(+), 87 deletions(-)
+ drivers/net/ethernet/mellanox/mlxsw/minimal.c | 111 ++++--------------
+ 1 file changed, 22 insertions(+), 89 deletions(-)
 
 diff --git a/drivers/net/ethernet/mellanox/mlxsw/minimal.c b/drivers/net/ethernet/mellanox/mlxsw/minimal.c
-index af4c9b44d9cf..161313bdda45 100644
+index af4c9b44d9cf..24cfdd80379c 100644
 --- a/drivers/net/ethernet/mellanox/mlxsw/minimal.c
 +++ b/drivers/net/ethernet/mellanox/mlxsw/minimal.c
 @@ -131,23 +131,6 @@ static const struct ethtool_ops mlxsw_m_port_ethtool_ops = {
@@ -53,7 +53,22 @@ index af4c9b44d9cf..161313bdda45 100644
  	return 0;
  }
  
-@@ -244,91 +227,46 @@ static void mlxsw_m_port_remove(struct mlxsw_m *mlxsw_m, u8 local_port)
+@@ -211,7 +194,7 @@ mlxsw_m_port_create(struct mlxsw_m *mlxsw_m, u8 local_port, u8 module)
+ 	}
+ 
+ 	netif_carrier_off(dev);
+-	mlxsw_m->ports[local_port] = mlxsw_m_port;
++	mlxsw_m->ports[local_port - 1] = mlxsw_m_port;
+ 	err = register_netdev(dev);
+ 	if (err) {
+ 		dev_err(mlxsw_m->bus_info->dev, "Port %d: Failed to register netdev\n",
+@@ -239,96 +222,51 @@ static void mlxsw_m_port_remove(struct mlxsw_m *mlxsw_m, u8 local_port)
+ 
+ 	mlxsw_core_port_clear(mlxsw_m->core, local_port, mlxsw_m);
+ 	unregister_netdev(mlxsw_m_port->dev); /* This calls ndo_stop */
+-	mlxsw_m->ports[local_port] = NULL;
++	mlxsw_m->ports[local_port - 1] = NULL;
+ 	free_netdev(mlxsw_m_port->dev);
  	mlxsw_core_port_fini(mlxsw_m->core, local_port);
  }
  
@@ -76,13 +91,13 @@ index af4c9b44d9cf..161313bdda45 100644
  		return err;
  
 -	if (!width)
--		return 0;
--	/* Skip, if port belongs to the cluster */
--	if (module == *last_module)
 +	mlxsw_reg_mgpir_unpack(mgpir_pl, NULL, NULL, NULL,
 +			       &mlxsw_m->max_ports);
 +	if (!mlxsw_m->max_ports)
  		return 0;
+-	/* Skip, if port belongs to the cluster */
+-	if (module == *last_module)
+-		return 0;
 -	*last_module = module;
 -
 -	if (WARN_ON_ONCE(module >= max_ports))
@@ -91,7 +106,7 @@ index af4c9b44d9cf..161313bdda45 100644
 -
 -	return 0;
 -}
- 
+-
 -static void mlxsw_m_port_module_unmap(struct mlxsw_m *mlxsw_m, u8 module)
 -{
 -	mlxsw_m->module_to_port[module] = -1;
@@ -103,7 +118,7 @@ index af4c9b44d9cf..161313bdda45 100644
 -	u8 last_module = max_ports;
 -	int i;
 -	int err;
--
+ 
 -	mlxsw_m->ports = kcalloc(max_ports, sizeof(*mlxsw_m->ports),
 +	mlxsw_m->ports = kcalloc(mlxsw_m->max_ports, sizeof(*mlxsw_m->ports),
  				 GFP_KERNEL);

@@ -1,7 +1,7 @@
-From afed392ed0c04069ff136f95235a87ea93ed1380 Mon Sep 17 00:00:00 2001
+From 4db801c656712234c840883b68429e6d45080ea3 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Tue, 6 Jul 2021 18:38:29 +0000
-Subject: [PATCH backport v5.10.43 45/47] leds: mlxreg: Provide conversion for
+Subject: [PATCH backport v5.10.43 49/65] leds: mlxreg: Provide conversion for
  hardware LED color code
 
 In case register is set by hardware, convert hardware color code to

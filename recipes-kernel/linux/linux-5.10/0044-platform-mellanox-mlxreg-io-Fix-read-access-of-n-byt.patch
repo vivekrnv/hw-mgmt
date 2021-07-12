@@ -1,7 +1,7 @@
-From 143430a486935e637bf00a78f2842a35370743be Mon Sep 17 00:00:00 2001
+From 5819cfb897358c008e0fe5ccd5efd5ca681eb151 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Tue, 6 Jul 2021 05:57:39 +0000
-Subject: [PATCH backport v5.10.43 41/41] platform/mellanox: mlxreg-io: Fix
+Subject: [PATCH backport v5.10.43 44/65] platform/mellanox: mlxreg-io: Fix
  read access of n-bytes size attributes
 
 Fix shift argument for function rol32(). It should be provided in bits,

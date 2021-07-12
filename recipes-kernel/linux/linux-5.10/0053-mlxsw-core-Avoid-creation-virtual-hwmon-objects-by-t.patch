@@ -1,7 +1,7 @@
-From 4389402103148cf7668bc8b31717f7d407a03282 Mon Sep 17 00:00:00 2001
+From fe1adcfd35eed3c6eead5c10e589ff73cfada97b Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Wed, 4 Nov 2020 20:07:15 +0200
-Subject: [PATCH backport v5.10.43 38/41] mlxsw: core: Avoid creation virtual
+Subject: [PATCH backport v5.10.43 53/65] mlxsw: core: Avoid creation virtual
  hwmon objects by thermal module
 
 Extend initialization of each thermal zone with 'thermal_zone_params',

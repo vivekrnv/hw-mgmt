@@ -1,7 +1,7 @@
-From 4b5fa93105aa4cbccf9efee52bacc7a9d054c0a1 Mon Sep 17 00:00:00 2001
+From 7243c333c0b65c1173809d3ca8b9dceffd5de25b Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Tue, 6 Jul 2021 05:50:28 +0000
-Subject: [PATCH backport v5.10.43 40/41] platform/mellanox: mlxreg-io: Fix
+Subject: [PATCH backport v5.10.43 43/65] platform/mellanox: mlxreg-io: Fix
  argument base in kstrtou32() call
 
 Change kstrtou32() argument 'base' to be zero instead of 'len'.

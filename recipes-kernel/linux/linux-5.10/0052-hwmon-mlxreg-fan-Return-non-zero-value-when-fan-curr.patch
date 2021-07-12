@@ -1,7 +1,7 @@
-From 3acf3b2b6e2edb85c0c82e7f1208043a1cb899ac Mon Sep 17 00:00:00 2001
+From 380be81bf997d8cdd98cbb91fe4215419f8148da Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Thu, 8 Jul 2021 09:44:28 +0000
-Subject: [PATCH backport v5.10.43 53/53] hwmon: (mlxreg-fan) Return non-zero
+Subject: [PATCH backport v5.10.43 52/65] hwmon: (mlxreg-fan) Return non-zero
  value when fan current state is enforced from sysfs
 
 Fan speed minimum can be enforced from sysfs. For example, setting

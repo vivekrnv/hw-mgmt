@@ -1,7 +1,7 @@
-From e01e36fe2e0d7bff12ec056a305638be7c0a1997 Mon Sep 17 00:00:00 2001
+From 6fe5e1d9f90a7d704dedf156b8b1483f3cc245c1 Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
 Date: Wed, 7 Jul 2021 10:29:27 +0000
-Subject: [PATCH backport v5.10.43 47/47] leds: mlxreg: Allow
+Subject: [PATCH backport v5.10.43 51/65] leds: mlxreg: Allow
  multi-instantiation of same name LED for modular systems
 
 It could be more than one instance of LED with the same name in the

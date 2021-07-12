@@ -1,7 +1,7 @@
-From 68e36a1aa09abcdb565c7a03e497f8190d1f9b61 Mon Sep 17 00:00:00 2001
+From d5588f9077862b811978712fda5758d383369a8f Mon Sep 17 00:00:00 2001
 From: Ido Schimmel <idosch@nvidia.com>
 Date: Sun, 6 Jun 2021 17:24:22 +0300
-Subject: [PATCH backport v5.10.43 49/52] ethtool: Fix NULL pointer dereference
+Subject: [PATCH backport v5.10.43 39/65] ethtool: Fix NULL pointer dereference
  during module EEPROM dump
 
 When get_module_eeprom_by_page() is not implemented by the driver, NULL
