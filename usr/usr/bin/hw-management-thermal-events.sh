@@ -868,11 +868,7 @@ else
 
 		if [ -L $eeprom_path/"$2"_info ] && [ -f $config_path/"$2"_eeprom_us ]; then
 			psu_addr=$(< $config_path/"$2"_i2c_addr)
-<<<<<<< HEAD
-			psu_eeprom_addr=`printf '%02x\n' $(($psu_addr - 8))`
-=======
 			psu_eeprom_addr=$(printf '%02x\n' $((psu_addr - 8)))
->>>>>>> 68621b8... hw-mgmt: events: Fix calculation for PSU EEPROM slave address (#183)
 			echo 0x$psu_eeprom_addr > /sys/class/i2c-dev/i2c-"$bus"/device/delete_device
 			unlink $eeprom_path/"$2"_info
 			rm -rf $config_path/"$2"_eeprom_us
