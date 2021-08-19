@@ -1,6 +1,6 @@
-From f6923a587759cc0d86d5bfa7ae25615a95370349 Mon Sep 17 00:00:00 2001
+From 6106011c6cc8f984c41898e749cb2420b2cbac5f Mon Sep 17 00:00:00 2001
 From: Vadim Pasternak <vadimp@nvidia.com>
-Date: Thu, 19 Aug 2021 13:01:23 +0000
+Date: Thu, 19 Aug 2021 14:23:39 +0000
 Subject: [PATCH backport v.4.19 3/3] platform/x86: mlx-platform: Add support
  for multiply cooling devices
 
@@ -10,11 +10,11 @@ capability is detected according to the registers initial setting.
 
 Signed-off-by: Vadim Pasternak <vadimp@nvidia.com>
 ---
- drivers/platform/x86/mlx-platform.c | 24 ++++++++++++++++++++++++
- 1 file changed, 24 insertions(+)
+ drivers/platform/x86/mlx-platform.c | 27 +++++++++++++++++++++++++++
+ 1 file changed, 27 insertions(+)
 
 diff --git a/drivers/platform/x86/mlx-platform.c b/drivers/platform/x86/mlx-platform.c
-index 3697b991f..8a7c020d3 100644
+index 3697b991f..f5fed9e82 100644
 --- a/drivers/platform/x86/mlx-platform.c
 +++ b/drivers/platform/x86/mlx-platform.c
 @@ -120,6 +120,7 @@
@@ -83,6 +83,16 @@ index 3697b991f..8a7c020d3 100644
  	case MLXPLAT_CPLD_LPC_REG_TACHO1_OFFSET:
  	case MLXPLAT_CPLD_LPC_REG_TACHO2_OFFSET:
  	case MLXPLAT_CPLD_LPC_REG_TACHO3_OFFSET:
+@@ -4460,6 +4484,9 @@ static const struct reg_default mlxplat_mlxcpld_regmap_ng400[] = {
+ static const struct reg_default mlxplat_mlxcpld_regmap_eth_modular[] = {
+ 	{ MLXPLAT_CPLD_LPC_REG_GP2_OFFSET, 0x61 },
+ 	{ MLXPLAT_CPLD_LPC_REG_PWM_CONTROL_OFFSET, 0x00 },
++	{ MLXPLAT_CPLD_LPC_REG_PWM2_OFFSET, 0x00 },
++	{ MLXPLAT_CPLD_LPC_REG_PWM3_OFFSET, 0x00 },
++	{ MLXPLAT_CPLD_LPC_REG_PWM4_OFFSET, 0x00 },
+ 	{ MLXPLAT_CPLD_LPC_REG_WD1_ACT_OFFSET, 0x00 },
+ 	{ MLXPLAT_CPLD_LPC_REG_WD2_ACT_OFFSET, 0x00 },
+ 	{ MLXPLAT_CPLD_LPC_REG_WD3_ACT_OFFSET, 0x00 },
 -- 
 2.20.1
 
